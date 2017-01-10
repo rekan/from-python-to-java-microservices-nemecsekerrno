@@ -26,17 +26,20 @@
             <artifactId>spark-core</artifactId>
             <version>2.5.3</version>
         </dependency>
-
         <dependency>
             <groupId>com.sparkjava</groupId>
             <artifactId>spark-template-thymeleaf</artifactId>
             <version>2.3</version>
         </dependency>
-
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20160810</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>fluent-hc</artifactId>
+            <version>4.5.2</version>
         </dependency>
     </dependencies>
 
