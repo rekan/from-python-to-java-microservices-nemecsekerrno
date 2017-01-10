@@ -1,6 +1,6 @@
 package com.codecool.shipping_cost_calculator_service.controller;
 
-import com.codecool.shipping_cost_calculator_service.service.ShippingCostCalculatorAPIService;
+import com.codecool.shipping_cost_calculator_service.service.GoogleMapsAPIService;
 import spark.Request;
 import spark.Response;
 
@@ -11,9 +11,9 @@ import java.util.HashMap;
  */
 public class ShippingCostCalculatorAPIController {
 
-    private final ShippingCostCalculatorAPIService apiService;
+    private final GoogleMapsAPIService apiService;
 
-    public ShippingCostCalculatorAPIController( ShippingCostCalculatorAPIService apiService) {
+    public ShippingCostCalculatorAPIController( GoogleMapsAPIService apiService) {
         this.apiService = apiService;
     }
 
