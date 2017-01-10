@@ -4,6 +4,8 @@ package com.codecool.shipping_cost_calculator_service;
 import com.codecool.shipping_cost_calculator_service.controller.ShippingCostCalculatorAPIController;
 import com.codecool.shipping_cost_calculator_service.service.ShippingCostCalculatorAPIService;
 
+import java.net.URISyntaxException;
+
 import static spark.Spark.*;
 
 /**
@@ -18,7 +20,18 @@ public class ShippingCostCalculatorService {
         ShippingCostCalculatorService app = new ShippingCostCalculatorService();
         app.controller = new ShippingCostCalculatorAPIController(ShippingCostCalculatorAPIService.getINSTANCE());
 
+        get("/status", app.controller::status);
+        get("/shipping-cost", app.controller::shippingCost);
 
+        exception(URISyntaxException.class, (exception, request, response) -> {
+            response.status(500);
+            response.body(String.format("URI building error, maybe wrong format? : %s", exception.getMessage()));
+        });
+
+        exception(Exception.class, (exception, request, response) -> {
+            response.status(500);
+            response.body(String.format("Unexpected error occurred: %s", exception.getMessage()));
+        });
     }
 }
 
