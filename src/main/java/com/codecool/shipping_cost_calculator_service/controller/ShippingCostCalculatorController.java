@@ -9,11 +9,11 @@ import java.util.HashMap;
 /**
  * Created by shevah on 10/01/17.
  */
-public class ShippingCostCalculatorAPIController {
+public class ShippingCostCalculatorController {
 
     private final GoogleMapsAPIService apiService;
 
-    public ShippingCostCalculatorAPIController( GoogleMapsAPIService apiService) {
+    public ShippingCostCalculatorController(GoogleMapsAPIService apiService) {
         this.apiService = apiService;
     }
 

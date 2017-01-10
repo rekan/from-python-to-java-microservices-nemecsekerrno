@@ -1,7 +1,7 @@
 package com.codecool.shipping_cost_calculator_service;
 
 
-import com.codecool.shipping_cost_calculator_service.controller.ShippingCostCalculatorAPIController;
+import com.codecool.shipping_cost_calculator_service.controller.ShippingCostCalculatorController;
 import com.codecool.shipping_cost_calculator_service.service.GoogleMapsAPIService;
 
 import java.net.URISyntaxException;
@@ -13,12 +13,12 @@ import static spark.Spark.*;
  */
 public class ShippingCostCalculatorService {
 
-    private ShippingCostCalculatorAPIController controller;
+    private ShippingCostCalculatorController controller;
 
     public static void main(String[] args) {
         port(65011);
         ShippingCostCalculatorService app = new ShippingCostCalculatorService();
-        app.controller = new ShippingCostCalculatorAPIController(GoogleMapsAPIService.getINSTANCE());
+        app.controller = new ShippingCostCalculatorController(GoogleMapsAPIService.getINSTANCE());
 
         get("/status", app.controller::status);
         get("/shipping-cost", app.controller::shippingCost);
