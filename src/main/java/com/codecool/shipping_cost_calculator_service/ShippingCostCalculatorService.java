@@ -7,6 +7,7 @@ import com.codecool.shipping_cost_calculator_service.service.GoogleMapsAPIServic
 import java.net.URISyntaxException;
 
 import static spark.Spark.*;
+import static spark.debug.DebugScreen.enableDebugScreen;
 
 /**
  * Created by berloc on 2017.01.10..
@@ -32,6 +33,8 @@ public class ShippingCostCalculatorService {
             response.status(500);
             response.body(String.format("Unexpected error occurred: %s", exception.getMessage()));
         });
+
+        enableDebugScreen();
     }
 }
 
