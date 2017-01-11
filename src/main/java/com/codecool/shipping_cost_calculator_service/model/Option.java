@@ -3,6 +3,8 @@ package com.codecool.shipping_cost_calculator_service.model;
 import java.util.Currency;
 
 public class Option {
+    private String originFound;
+    private String destinationFound;
     private float distanceInKm;
     private float timeInHours;
     private String details;
@@ -19,9 +21,11 @@ public class Option {
     private final int TimeMachineTime = 1;
     private final int TimeMachineCost = 6000000;
 //    -------------------------------
-    
 
-    public Option(String type, int distanceInKm, float timeInHours) {
+
+    public Option(String type, String originFound, String destinationFound, int distanceInKm, float timeInHours) {
+        this.originFound = originFound;
+        this.destinationFound = destinationFound;
 
         switch (type) {
             case "truck":
@@ -55,6 +59,14 @@ public class Option {
                 this.cost = distanceInKm * StandardFeePerKm;
                 break;
         }
+    }
+
+    public String getOriginFound() {
+        return originFound;
+    }
+
+    public String getDestinationFound() {
+        return destinationFound;
     }
 
     public float getDistanceInKm() {
