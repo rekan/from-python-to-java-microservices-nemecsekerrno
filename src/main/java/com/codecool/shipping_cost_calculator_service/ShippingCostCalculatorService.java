@@ -21,7 +21,7 @@ public class ShippingCostCalculatorService {
         app.controller = new ShippingCostCalculatorController(GoogleMapsAPIService.getINSTANCE());
 
         get("/status", app.controller::status);
-        get("/shipping-cost", app.controller::shippingCost);
+        get("/shipping-cost", app.controller::extractData);
 
         exception(URISyntaxException.class, (exception, request, response) -> {
             response.status(500);
