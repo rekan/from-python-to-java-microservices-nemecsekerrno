@@ -1,5 +1,6 @@
 package com.codecool.shipping_cost_calculator_service.controller;
 
+import com.codecool.shipping_cost_calculator_service.model.ShippingOption;
 import com.codecool.shipping_cost_calculator_service.service.GoogleMapsAPIService;
 import org.json.JSONObject;
 import spark.Request;
@@ -27,11 +28,25 @@ public class ShippingCostCalculatorController {
     public JSONObject generateOptions(Request request, Response response) throws IOException, URISyntaxException {
         String originAddress = request.queryParams("origin");
         String destinationAddress = request.queryParams("destination");
+
         if (originAddress.trim().isEmpty() || destinationAddress.trim().isEmpty()) {
             return generateErrorJson(response, 400, "Origin or destination cannot be empty or whitespaces only");
         }
+
         String rawData = apiService.requestData(originAddress, destinationAddress);
-        return extractData(response, rawData);
+        JSONObject extractedData = extractData(response, rawData);
+
+        if (extractedData.has("error")) {
+            return extractedData;
+        }
+
+        JSONObject allOptionsJSON = new JSONObject();
+        for (String type : ShippingOption.TYPES) {
+            allOptionsJSON.put(type, (new JSONObject(new ShippingOption(type, extractedData.getString("originFound"),
+                    extractedData.getString("destinationFound"), extractedData.getInt("dist"),
+                    extractedData.getInt("time")))));
+        }
+        return allOptionsJSON;
     }
 
     public JSONObject extractData(Response res, String rawData) {
@@ -69,10 +84,12 @@ public class ShippingCostCalculatorController {
             case "OK":
                 Integer rawDistance = elements.getJSONObject("distance").getInt("value");
                 Integer rawTime = elements.getJSONObject("duration").getInt("value");
-                HashMap<String, Float> distAndTimeValues = new HashMap<>();
-                distAndTimeValues.put("dist", rawDistance/1000.f);
-                distAndTimeValues.put("time", rawTime/3600.f);
-                return new JSONObject(distAndTimeValues);
+                HashMap<String, Object> optionValues = new HashMap<>();
+                optionValues.put("dist", rawDistance/1000.f);
+                optionValues.put("time", rawTime/3600.f);
+                optionValues.put("originFound", rawDataJSON.getJSONArray("origin_addresses").get(0));
+                optionValues.put("destinationFound", rawDataJSON.getJSONArray("destination_addresses").get(0));
+                return new JSONObject(optionValues);
             default:
                 return generateErrorJson(res, 501, "Distance Matrix elements status message not implemented");
         }
