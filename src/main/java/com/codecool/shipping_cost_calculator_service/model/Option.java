@@ -23,7 +23,7 @@ public class Option {
 //    -------------------------------
 
 
-    public Option(String type, String originFound, String destinationFound, int distanceInKm, float timeInHours) {
+    public Option(String type, String originFound, String destinationFound, float distanceInKm, float timeInHours) {
         this.originFound = originFound;
         this.destinationFound = destinationFound;
 
