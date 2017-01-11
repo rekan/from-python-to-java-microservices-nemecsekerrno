@@ -1,8 +1,12 @@
 package com.codecool.shipping_cost_calculator_service.model;
 
+import java.util.Arrays;
 import java.util.Currency;
+import java.util.List;
 
-public class Option {
+public class ShippingOption {
+    public static final List<String> TYPES = Arrays.asList("truck", "truckViaHighway", "expressCourier",
+            "timeMachine");
     private String originFound;
     private String destinationFound;
     private float distanceInKm;
@@ -12,7 +16,7 @@ public class Option {
     private final Currency currency = Currency.getInstance("USD");
 
 //    ------ PRICING CONSTANTS ------
-    private final int StandardFeePerKm = 5;
+    private final float StandardFeePerKm = 0.01f;
     private final float HighwayDistanceModifier = 0.88f;
     private final float HighwayTimeModifier = 0.6f;
     private final int HighwayFeePerKm = 1;
@@ -23,7 +27,7 @@ public class Option {
 //    -------------------------------
 
 
-    public Option(String type, String originFound, String destinationFound, float distanceInKm, float timeInHours) {
+    public ShippingOption(String type, String originFound, String destinationFound, float distanceInKm, float timeInHours) {
         this.originFound = originFound;
         this.destinationFound = destinationFound;
 
