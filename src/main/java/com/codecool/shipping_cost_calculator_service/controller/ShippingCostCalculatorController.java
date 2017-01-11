@@ -26,13 +26,18 @@ public class ShippingCostCalculatorController {
         return "ok";
     }
 
-    public HashMap<String, Float> generateOptions(Request request, Response response) throws IOException, URISyntaxException,
-            GoogleMapsStatusException {
+    public JSONObject generateOptions(Request request, Response response) throws IOException,
+            URISyntaxException,  GoogleMapsStatusException {
         String originAddress = request.queryParams("origin");
         String destinationAddress = request.queryParams("destination");
+        if (originAddress.trim().isEmpty() || destinationAddress.trim().isEmpty()) {
+            return generateErrorJson(response, 400, "Origin or destination cannot be empty or whitespaces only");
+        }
         String rawData = apiService.requestData(originAddress, destinationAddress);
-        return extractData(rawData);
+        JSONObject toReturn = new JSONObject(extractData(rawData));
+        return toReturn;
     }
+
 
     public HashMap<String, Float> extractData(String rawData) throws JSONException, GoogleMapsStatusException {
         JSONObject rawDataJSON = new JSONObject(rawData);
@@ -51,5 +56,13 @@ public class ShippingCostCalculatorController {
         distAndTimeValues.put("time", rawTime/3600.f);
 
         return distAndTimeValues;
+    }
+
+    private JSONObject generateErrorJson(Response response, int statusCode, String message) {
+        response.status(statusCode);
+        response.type("application/json");
+        JSONObject errorJson = new JSONObject();
+        errorJson.put("error", message);
+        return errorJson;
     }
 }
