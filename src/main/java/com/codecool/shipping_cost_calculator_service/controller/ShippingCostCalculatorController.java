@@ -43,7 +43,7 @@ public class ShippingCostCalculatorController {
 
         switch (status){
             case "OVER_QUERY_LIMIT":
-                return generateErrorJson(res, 500,
+                return generateErrorJson(res, 429,
                         "The application has requested too many elements within the allowed time period." +
                                 "The request should succeed if you try again after a reasonable amount of time.");
             case "REQUEST_DENIED":
