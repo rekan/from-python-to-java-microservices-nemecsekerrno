@@ -1,7 +1,6 @@
 package com.codecool.shipping_cost_calculator_service.controller;
 
 import com.codecool.shipping_cost_calculator_service.service.GoogleMapsAPIService;
-import org.json.JSONException;
 import org.json.JSONObject;
 import spark.Request;
 import spark.Response;
@@ -35,7 +34,7 @@ public class ShippingCostCalculatorController {
         return extractData(response, rawData);
     }
 
-    public JSONObject extractData(Response res, String rawData) throws JSONException {
+    public JSONObject extractData(Response res, String rawData) {
         JSONObject rawDataJSON = new JSONObject(rawData);
         String status = rawDataJSON.getString("status");
         JSONObject elements;
@@ -53,10 +52,12 @@ public class ShippingCostCalculatorController {
                 return generateErrorJson(res, 500,
                         "A Distance Matrix request could not be processed due to a server error." +
                                 "The request may succeed if you try again.");
-            default:
+            case "OK":
                 elements = rawDataJSON.getJSONArray("rows").getJSONObject(0).getJSONArray("elements").getJSONObject(0);
                 elementsStatus = elements.getString("status");
                 break;
+            default:
+                return generateErrorJson(res, 501, "Distance Matrix status message not implemented");
         }
 
         switch (elementsStatus) {
@@ -65,13 +66,15 @@ public class ShippingCostCalculatorController {
                         "The origin and/or destination of this pairing could not be geocoded.");
             case "ZERO_RESULTS":
                 return generateErrorJson(res, 400, "No route could be found between the origin and destination.");
-            default:
+            case "OK":
                 Integer rawDistance = elements.getJSONObject("distance").getInt("value");
                 Integer rawTime = elements.getJSONObject("duration").getInt("value");
                 HashMap<String, Float> distAndTimeValues = new HashMap<>();
                 distAndTimeValues.put("dist", rawDistance/1000.f);
                 distAndTimeValues.put("time", rawTime/3600.f);
                 return new JSONObject(distAndTimeValues);
+            default:
+                return generateErrorJson(res, 501, "Distance Matrix elements status message not implemented");
         }
     }
 
