@@ -19,7 +19,7 @@ Clone the repository: https://github.com/CodecoolBP20161/from-python-to-java-mic
 
 
 1. Go into the folder of the service: 
-  - from-python-to-java-microservices-nemecsekerrno/src/main/java/com/codecool/shipping_cost_calculator_service/server
+  ```from-python-to-java-microservices-nemecsekerrno/src/main/java/com/codecool/shipping_cost_calculator_service/server```
 2. Run the ShippingCostCalculatorService.java file
 3. The service is running on the 65011 port
 4. You can check the server status on: [http://localhost:65011/status](http://localhost:65011/status)
@@ -33,20 +33,11 @@ Clone the repository: https://github.com/CodecoolBP20161/from-python-to-java-mic
 ```
 
 
-
-### Frequent error messages
-
-1. ```"Origin or destination cannot be empty or whitespaces only"```
- - request without origin or destination
-2. ```""No route could be found between the origin and destination.""```
- - invalid origin or destination
-3. ```"No ."```
- - request without origin or destination
-
-
 ## Tests
 
 To be implemented.
+
+### Frequent error messages
 
 1. Shipping cost calculator service:
     - Origin or destination cannot be empty or whitespaces only
@@ -65,7 +56,7 @@ To be implemented.
 
 ## Built With
 
-* [Spark](http://sparkjava.com/documentation.html) - Lightweight Webserver
+* [Spark](http://sparkjava.com/documentation.html) - Micro web framework
 * [Maven](https://maven.apache.org/) - Project Framework
 
 
@@ -82,7 +73,7 @@ To be implemented.
 ## License
 
 This project is licensed Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) under creative commons
-fby the nemecsek_errno team
+by the nemecsek_errno team
 
 
 ## Acknowledgments
