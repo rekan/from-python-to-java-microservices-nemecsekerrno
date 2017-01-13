@@ -21,8 +21,9 @@ Clone the repository: https://github.com/CodecoolBP20161/from-python-to-java-mic
 2. Run the ShippingCostCalculatorService.java file
 3. The service is running on the 65011 port
 4. You can check the server status on: [http://localhost:65011/status](http://localhost:65011/status)
-5. You can make request like this: [http://localhost:65011/shipping-cost?origins=budapest&destinations=erd](http://localhost:65011/shipping-cost?origins=budapest&destinations=erd)
-6. The response should look like this: ![](https://github.com/CodecoolBP20161/from-python-to-java-microservices-nemecsekerrno/blob/storyID_42/src/main/java/com/codecool/shipping_cost_calculator_service/shippingserviceresponse.png)
+5. You can make request like this: [http://localhost:65011/shipping-cost?origin=budapest&destination=erd](http://localhost:65011/shipping-cost?origin=budapest&destination=erd)
+6. The response should look like this: 
+![](https://github.com/CodecoolBP20161/from-python-to-java-microservices-nemecsekerrno/blob/storyID_42/src/main/java/com/codecool/shipping_cost_calculator_service/shippingserviceresponse.png)
 
 
 
