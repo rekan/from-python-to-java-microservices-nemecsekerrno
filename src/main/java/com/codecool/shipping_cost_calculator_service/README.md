@@ -2,16 +2,18 @@
 
 This service can calculate the shipping cost between the origin and the destination and offer 4 shipping options. 
 
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine.
 
-### Prerequisites
 
+### Prerequisites
 
 ```
 Clone the repository: https://github.com/CodecoolBP20161/from-python-to-java-microservices-nemecsekerrno.git
 ```
+
 
 ### Running the service
 
@@ -34,11 +36,22 @@ Clone the repository: https://github.com/CodecoolBP20161/from-python-to-java-mic
 
 ### Frequent error messages
 
+1. ```"Origin or destination cannot be empty or whitespaces only"```
+ - request without origin or destination
+2. ```""No route could be found between the origin and destination.""```
+ - invalid origin or destination
+3. ```"No ."```
+ - request without origin or destination
+
+
+## Tests
+
+To be implemented.
+
 1. Shipping cost calculator service:
     - Origin or destination cannot be empty or whitespaces only
     - Distance Matrix elements status message not implemented     
     - Distance Matrix status message not implemented
-    
         
 2. Google Distance Matrix API errors:
     - The application has requested too many elements within the allowed time period. 
@@ -49,10 +62,11 @@ Clone the repository: https://github.com/CodecoolBP20161/from-python-to-java-mic
     - No route could be found between the origin and destination.
     - The origin and/or destination of this pairing could not be geocoded.
 
+
 ## Built With
 
-* [Spark](http://sparkjava.com/documentation.html) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
+* [Spark](http://sparkjava.com/documentation.html) - Lightweight Webserver
+* [Maven](https://maven.apache.org/) - Project Framework
 
 
 ## Authors
@@ -67,7 +81,9 @@ Clone the repository: https://github.com/CodecoolBP20161/from-python-to-java-mic
 
 ## License
 
-This project is licensed under the nemecsek_errno team
+This project is licensed Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) under creative commons
+fby the nemecsek_errno team
+
 
 ## Acknowledgments
 
@@ -75,3 +91,4 @@ This project is licensed under the nemecsek_errno team
 * Family
 * Friends
 * Sponsors
+* cats, dolphins and penguins
