@@ -33,34 +33,34 @@ public class ShippingOption {
 
         switch (type) {
             case "truck":
-                this.distanceInKm = distanceInKm;
-                this.timeInHours = timeInHours;
+                this.distanceInKm = (int) Math.ceil(distanceInKm);
+                this.timeInHours = (int) Math.ceil(timeInHours);
                 this.details = "Standard truck avoiding highways";
-                this.cost = distanceInKm * StandardFeePerKm;
+                this.cost = (int) Math.ceil(distanceInKm * StandardFeePerKm);
                 break;
             case "truckViaHighway":
-                this.distanceInKm = distanceInKm * HighwayDistanceModifier;
-                this.timeInHours = timeInHours * HighwayTimeModifier;
+                this.distanceInKm = (int) Math.ceil(distanceInKm * HighwayDistanceModifier);
+                this.timeInHours = (int) Math.ceil(timeInHours * HighwayTimeModifier);
                 this.details = "Standard truck via highway";
-                this.cost = (distanceInKm * StandardFeePerKm)*(distanceInKm * HighwayFeePerKm);
+                this.cost = (int) Math.ceil((distanceInKm * StandardFeePerKm)+(distanceInKm * HighwayFeePerKm));
                 break;
             case "expressCourier":
-                this.distanceInKm = distanceInKm;
+                this.distanceInKm = (int) Math.ceil(distanceInKm);
                 this.timeInHours = ExpressCourierTime;
                 this.details = "Express courier with fixed cost and time";
                 this.cost = ExpressCourierCost;
                 break;
             case "timeMachine":
-                this.distanceInKm = distanceInKm;
+                this.distanceInKm = (int) Math.ceil(distanceInKm);
                 this.timeInHours = TimeMachineTime;
                 this.details = "Most advanced technology, totally safe - we promise";
                 this.cost = TimeMachineCost;
                 break;
             default:
-                this.distanceInKm = distanceInKm;
-                this.timeInHours = timeInHours;
+                this.distanceInKm = (int) Math.ceil(distanceInKm);
+                this.timeInHours = (int) Math.ceil(timeInHours);
                 this.details = "Standard truck avoiding highways";
-                this.cost = distanceInKm * StandardFeePerKm;
+                this.cost = (int) Math.ceil(distanceInKm * StandardFeePerKm);
                 break;
         }
     }
