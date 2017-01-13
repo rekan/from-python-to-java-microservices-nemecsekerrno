@@ -44,7 +44,8 @@ https://github.com/CodecoolBP20161/from-python-to-java-microservices-nemecsekerr
 "truck":
         {
         "destinationFound":"Érd, Hungary",
-        "cost":1,"originFound":"Budapest, Hungary",
+        "cost":1,
+        "originFound":"Budapest, Hungary",
         "details":"Standard truck avoiding highways",
         "currency":"USD",
         "timeInHours":0,
@@ -53,7 +54,8 @@ https://github.com/CodecoolBP20161/from-python-to-java-microservices-nemecsekerr
 "truckViaHighway":
         {
         "destinationFound":"Érd, Hungary",
-        "cost":22,"originFound":"Budapest, Hungary",
+        "cost":22,
+        "originFound":"Budapest, Hungary",
         "details":"Standard truck via highway",
         "currency":"USD",
         "timeInHours":0,
