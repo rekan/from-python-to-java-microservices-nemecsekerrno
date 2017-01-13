@@ -1,4 +1,4 @@
-package com.codecool.shipping_cost_calculator_service;
+package com.codecool.shipping_cost_calculator_service.server;
 
 
 import com.codecool.shipping_cost_calculator_service.controller.ShippingCostCalculatorController;
