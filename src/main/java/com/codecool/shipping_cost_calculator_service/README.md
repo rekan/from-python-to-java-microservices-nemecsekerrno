@@ -11,8 +11,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
+Clone the repository: 
 ```
-Clone the repository: https://github.com/CodecoolBP20161/from-python-to-java-microservices-nemecsekerrno.git
+https://github.com/CodecoolBP20161/from-python-to-java-microservices-nemecsekerrno.git
 ```
 
 
@@ -92,4 +93,4 @@ by the nemecsek_errno team
 * Family
 * Friends
 * Sponsors
-* cats, dolphins and penguins
+* Cats, dolphins and penguins
