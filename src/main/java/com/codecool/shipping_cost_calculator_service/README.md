@@ -1,17 +1,19 @@
 # Shipping cost calculator service
 
-This service can calculate the shipping cost between origin(s) and destination(s) and offer 4 shipping options. 
+This service can calculate the shipping cost between the origin and the destination and offer 4 shipping options. 
+
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine.
 
-### Prerequisites
 
+### Prerequisites
 
 ```
 Clone the repository: https://github.com/CodecoolBP20161/from-python-to-java-microservices-nemecsekerrno.git
 ```
+
 
 ### Running the service
 
@@ -22,7 +24,9 @@ Clone the repository: https://github.com/CodecoolBP20161/from-python-to-java-mic
 3. The service is running on the 65011 port
 4. You can check the server status on: [http://localhost:65011/status](http://localhost:65011/status)
 5. You can make request like this: [http://localhost:65011/shipping-cost?origin=budapest&destination=erd](http://localhost:65011/shipping-cost?origin=budapest&destination=erd)
-6. The response should look like this: ![](https://github.com/CodecoolBP20161/from-python-to-java-microservices-nemecsekerrno/blob/storyID_42/src/main/java/com/codecool/shipping_cost_calculator_service/shippingserviceresponse.png)
+6. The response should look like this: 
+    - {"expressCourier":{"destinationFound":"Érd, Hungary","cost":60,"originFound":"Budapest, Hungary","details":"Express courier with fixed cost and time","currency":"USD","timeInHours":48,"distanceInKm":21},"truck":{"destinationFound":"Érd, Hungary","cost":1,"originFound":"Budapest, Hungary","details":"Standard truck avoiding highways","currency":"USD","timeInHours":0,"distanceInKm":21},"truckViaHighway":{"destinationFound":"Érd, Hungary","cost":22,"originFound":"Budapest, Hungary","details":"Standard truck via highway","currency":"USD","timeInHours":0,"distanceInKm":19},"timeMachine":{"destinationFound":"Érd, Hungary","cost":6000000,"originFound":"Budapest, Hungary","details":"Most advanced technology, totally safe - we promise","currency":"USD","timeInHours":1,"distanceInKm":21}}
+    
 
 ### Frequent error messages
 
@@ -33,8 +37,25 @@ Clone the repository: https://github.com/CodecoolBP20161/from-python-to-java-mic
 3. ```"No ."```
  - request without origin or destination
 
+
 ## Tests
-* To be implemented.
+
+To be implemented.
+
+1. Shipping cost calculator service:
+    - Origin or destination cannot be empty or whitespaces only
+    - Distance Matrix elements status message not implemented     
+    - Distance Matrix status message not implemented
+        
+2. Google Distance Matrix API errors:
+    - The application has requested too many elements within the allowed time period. 
+        The request should succeed if you try again after a reasonable amount of time.
+    - The service denied use of the Distance Matrix service by your web page.
+    - A Distance Matrix request could not be processed due to a server error.
+        The request may succeed if you try again.
+    - No route could be found between the origin and destination.
+    - The origin and/or destination of this pairing could not be geocoded.
+
 
 ## Built With
 
@@ -56,6 +77,7 @@ Clone the repository: https://github.com/CodecoolBP20161/from-python-to-java-mic
 
 This project is licensed Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) under creative commons
 fby the nemecsek_errno team
+
 
 ## Acknowledgments
 
