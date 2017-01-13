@@ -9,8 +9,8 @@ public class ShippingOption {
             "timeMachine");
     private String originFound;
     private String destinationFound;
-    private float distanceInKm;
-    private float timeInHours;
+    private int distanceInKm;
+    private int timeInHours;
     private String details;
     private float cost;
     private final Currency currency = Currency.getInstance("USD");
@@ -19,9 +19,9 @@ public class ShippingOption {
     private final float StandardFeePerKm = 0.01f;
     private final float HighwayDistanceModifier = 0.88f;
     private final float HighwayTimeModifier = 0.6f;
-    private final int HighwayFeePerKm = 1;
+    private final float HighwayFeePerKm = 0.02f;
     private final int ExpressCourierTime = distanceInKm < 400 ? 48 : 96;
-    private final int ExpressCourierCost = distanceInKm < 400 ? 60 : 80;
+    private final int ExpressCourierCost = distanceInKm < 400 ? 5 : 10;
     private final int TimeMachineTime = 1;
     private final int TimeMachineCost = 6000000;
 //    -------------------------------
@@ -30,37 +30,39 @@ public class ShippingOption {
     public ShippingOption(String type, String originFound, String destinationFound, float distanceInKm, float timeInHours) {
         this.originFound = originFound;
         this.destinationFound = destinationFound;
+        int roundedTimeInHours = (int) Math.ceil(timeInHours) < 1 ? 1 : (int) Math.ceil(timeInHours);
+        int roundedDistanceInKm = (int) Math.ceil(distanceInKm) < 1 ? 1 : (int) Math.ceil(distanceInKm);
 
         switch (type) {
             case "truck":
-                this.distanceInKm = (int) Math.ceil(distanceInKm);
-                this.timeInHours = (int) Math.ceil(timeInHours);
+                this.distanceInKm = roundedDistanceInKm;
+                this.timeInHours = roundedTimeInHours;
                 this.details = "Standard truck avoiding highways";
-                this.cost = (int) Math.ceil(distanceInKm * StandardFeePerKm);
+                this.cost = (int) Math.ceil(roundedDistanceInKm * StandardFeePerKm);
                 break;
             case "truckViaHighway":
-                this.distanceInKm = (int) Math.ceil(distanceInKm * HighwayDistanceModifier);
-                this.timeInHours = (int) Math.ceil(timeInHours * HighwayTimeModifier);
+                this.distanceInKm = (int) Math.ceil(roundedDistanceInKm * HighwayDistanceModifier);
+                this.timeInHours = (int) Math.ceil(roundedTimeInHours * HighwayTimeModifier);
                 this.details = "Standard truck via highway";
-                this.cost = (int) Math.ceil((distanceInKm * StandardFeePerKm)+(distanceInKm * HighwayFeePerKm));
+                this.cost = (int) Math.ceil(roundedDistanceInKm * HighwayFeePerKm);
                 break;
             case "expressCourier":
-                this.distanceInKm = (int) Math.ceil(distanceInKm);
+                this.distanceInKm = roundedDistanceInKm;
                 this.timeInHours = ExpressCourierTime;
                 this.details = "Express courier with fixed cost and time";
                 this.cost = ExpressCourierCost;
                 break;
             case "timeMachine":
-                this.distanceInKm = (int) Math.ceil(distanceInKm);
+                this.distanceInKm = roundedDistanceInKm;
                 this.timeInHours = TimeMachineTime;
                 this.details = "Most advanced technology, totally safe - we promise";
                 this.cost = TimeMachineCost;
                 break;
             default:
-                this.distanceInKm = (int) Math.ceil(distanceInKm);
-                this.timeInHours = (int) Math.ceil(timeInHours);
+                this.distanceInKm = roundedDistanceInKm;
+                this.timeInHours = roundedTimeInHours;
                 this.details = "Standard truck avoiding highways";
-                this.cost = (int) Math.ceil(distanceInKm * StandardFeePerKm);
+                this.cost = (int) Math.ceil(roundedDistanceInKm * StandardFeePerKm);
                 break;
         }
     }

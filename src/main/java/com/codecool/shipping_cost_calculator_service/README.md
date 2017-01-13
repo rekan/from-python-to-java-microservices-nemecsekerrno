@@ -30,10 +30,48 @@ https://github.com/CodecoolBP20161/from-python-to-java-microservices-nemecsekerr
 5. You can make request like this: [http://localhost:65011/shipping-cost?origin=budapest&destination=erd](http://localhost:65011/shipping-cost?origin=budapest&destination=erd)
 6. The response should look like this: 
 ```json
-{"expressCourier": {"destinationFound":"Érd, Hungary","cost":60,"originFound":"Budapest, Hungary","details":"Express courier with fixed cost and time","currency":"USD","timeInHours":48,"distanceInKm":21},
-"truck":{"destinationFound":"Érd, Hungary","cost":1,"originFound":"Budapest, Hungary","details":"Standard truck avoiding highways","currency":"USD","timeInHours":0,"distanceInKm":21},
-"truckViaHighway":{"destinationFound":"Érd, Hungary","cost":22,"originFound":"Budapest, Hungary","details":"Standard truck via highway","currency":"USD","timeInHours":0,"distanceInKm":19},
-"timeMachine":{"destinationFound":"Érd, Hungary","cost":6000000,"originFound":"Budapest, Hungary","details":"Most advanced technology, totally safe - we promise","currency":"USD","timeInHours":1,"distanceInKm":21}}
+{
+"expressCourier":
+        {
+        "destinationFound":"Érd, Hungary",
+        "cost":60,
+        "originFound":"Budapest, Hungary",
+        "details":"Express courier with fixed cost and time",
+        "currency":"USD",
+        "timeInHours":48,
+        "distanceInKm":21
+        },
+"truck":
+        {
+        "destinationFound":"Érd, Hungary",
+        "cost":1,
+        "originFound":"Budapest, Hungary",
+        "details":"Standard truck avoiding highways",
+        "currency":"USD",
+        "timeInHours":0,
+        "distanceInKm":21
+        },
+"truckViaHighway":
+        {
+        "destinationFound":"Érd, Hungary",
+        "cost":22,
+        "originFound":"Budapest, Hungary",
+        "details":"Standard truck via highway",
+        "currency":"USD",
+        "timeInHours":0,
+        "distanceInKm":19
+        },
+"timeMachine":
+        {
+        "destinationFound":"Érd, Hungary",
+        "cost":6000000,
+        "originFound":"Budapest, Hungary",
+        "details":"Most advanced technology, totally safe - we promise",
+        "currency":"USD",
+        "timeInHours":1,
+        "distanceInKm":21
+        }
+    }
 ```
 
 ### Integration
