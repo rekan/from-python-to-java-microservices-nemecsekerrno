@@ -33,12 +33,13 @@ Clone the repository: https://github.com/CodecoolBP20161/from-python-to-java-mic
 3. ```"No ."```
  - request without origin or destination
 
-
+## Tests
+* To be implemented.
 
 ## Built With
 
-* [Spark](http://sparkjava.com/documentation.html) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
+* [Spark](http://sparkjava.com/documentation.html) - Lightweight Webserver
+* [Maven](https://maven.apache.org/) - Project Framework
 
 
 ## Authors
@@ -53,7 +54,8 @@ Clone the repository: https://github.com/CodecoolBP20161/from-python-to-java-mic
 
 ## License
 
-This project is licensed under the nemecsek_errno team
+This project is licensed Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) under creative commons
+fby the nemecsek_errno team
 
 ## Acknowledgments
 
@@ -61,3 +63,4 @@ This project is licensed under the nemecsek_errno team
 * Family
 * Friends
 * Sponsors
+* cats, dolphins and penguins
