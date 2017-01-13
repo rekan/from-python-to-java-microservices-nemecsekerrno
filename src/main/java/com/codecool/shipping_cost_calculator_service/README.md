@@ -1,6 +1,7 @@
 # Shipping cost calculator service
 
-This service can calculate the shipping cost between the origin and the destination and offer 4 shipping options. 
+This service can calculate the shipping cost between two locations. For example your warehouse and the customer's address.
+The service returns 4 shipping options. 
 
 
 ## Getting Started
@@ -34,8 +35,15 @@ Clone the repository: https://github.com/CodecoolBP20161/from-python-to-java-mic
 "timeMachine":{"destinationFound":"Érd, Hungary","cost":6000000,"originFound":"Budapest, Hungary","details":"Most advanced technology, totally safe - we promise","currency":"USD","timeInHours":1,"distanceInKm":21}}
 ```
 
+### Integration
 
-## Tests
+```
+http://localhost:65011/shipping-cost?origin=your_origin&destination=your_destination
+```
+
+The your_origin and the your_destination can contain utf-8 characters and full addresses or stubs.
+
+### Tests
 
 To be implemented.
 
