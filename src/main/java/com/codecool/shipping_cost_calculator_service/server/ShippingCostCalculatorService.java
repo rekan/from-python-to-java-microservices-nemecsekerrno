@@ -10,7 +10,9 @@ import static spark.Spark.*;
 import static spark.debug.DebugScreen.enableDebugScreen;
 
 /**
- * Created by berloc on 2017.01.10..
+ * @author      Errno Nemecsek <nemecsek_errno@bla.com>
+ * @version     1.0
+ * @since       1.0
  */
 public class ShippingCostCalculatorService {
 

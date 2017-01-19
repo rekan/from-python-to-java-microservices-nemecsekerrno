@@ -11,20 +11,44 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 
 /**
- * Created by shevah on 10/01/17.
+ * @author      Errno Nemecsek <nemecsek_errno@bla.com>
+ * @version     1.0
+ * @since       1.0
  */
+
 public class ShippingCostCalculatorController {
 
     private final GoogleMapsAPIService apiService;
 
+    /**
+     * Initializes a newly created ShippingCostCalculatorController.
+     *
+     * @param apiService    API service used by controller.
+     */
     public ShippingCostCalculatorController(GoogleMapsAPIService apiService) {
         this.apiService = apiService;
     }
 
+    /**
+     * Enables to check if service is running.
+     *
+     * @param request
+     * @param response
+     * @return          "OK" if service is running.
+     */
     public String status(Request request, Response response) {
         return "ok";
     }
 
+    /**
+     * Generates shipping options between given from and to addresses.
+     *
+     * @param request
+     * @param response
+     * @return       JSON containing all shipping options generated.
+     * @throws IOException
+     * @throws URISyntaxException
+     */
     public JSONObject generateOptions(Request request, Response response) throws IOException, URISyntaxException {
         String originAddress = request.queryParams("origin");
         String destinationAddress = request.queryParams("destination");
@@ -49,7 +73,7 @@ public class ShippingCostCalculatorController {
         return allOptionsJSON;
     }
 
-    public JSONObject extractData(Response res, String rawData) {
+    private JSONObject extractData(Response res, String rawData) {
         JSONObject rawDataJSON = new JSONObject(rawData);
         String status = rawDataJSON.getString("status");
         JSONObject elements;
